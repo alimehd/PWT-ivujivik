@@ -23,6 +23,7 @@
         <li><a href="#takeout">Takeout</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#hours">Hours</a></li>
+        <li><a href="#admin" class="nav-staff">🧑‍🍳 Staff</a></li>
       </ul>
     </div>
   </nav>
@@ -58,33 +59,33 @@
 
     <!-- HOT MEALS -->
     <div class="category meals-cat">
-      <h3 class="category-title"><span class="cat-icon">🍽️</span> Hot Meals</h3>
+      <h3 class="category-title"><span class="cat-icon">🍽️</span> Hot Meals <span class="tap-hint">tap for ingredients</span></h3>
       <div class="items-scroll">
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="quesadillas">
           <div class="menu-card-img"><img src="public/cheese-quesadillas-removebg-preview.png" class="spin-item" alt="Cheese Quesadillas" /></div>
           <p class="menu-card-name">Cheese Quesadillas</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="pizza">
           <div class="menu-card-img"><img src="public/mini-pizzas-removebg-preview.png" class="spin-item" alt="Mini Pizzas" /></div>
           <p class="menu-card-name">Mini Pizzas</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="poutine">
           <div class="menu-card-img"><img src="public/poutine-removebg-preview.png" class="spin-item" alt="Poutine" /></div>
           <p class="menu-card-name">Poutine</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="pasta">
           <div class="menu-card-img"><img src="public/pasta-removebg-preview.png" class="spin-item" alt="Pasta" /></div>
           <p class="menu-card-name">Pasta</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="sushi">
           <div class="menu-card-img"><img src="public/sushi-removebg-preview.png" class="spin-item" alt="Sushi" /></div>
           <p class="menu-card-name">Sushi</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="macaroni">
           <div class="menu-card-img"><img src="public/beef-macaroni-removebg-preview.png" class="spin-item" alt="Macaroni & Beef" /></div>
           <p class="menu-card-name">Macaroni &amp; Beef</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card meal-card" data-meal="wings">
           <div class="menu-card-img"><img src="public/chicken-wings-removebg-preview.png" class="spin-item" alt="Chicken Wings" /></div>
           <p class="menu-card-name">Chicken Wings</p>
         </div>
@@ -204,6 +205,88 @@
     </div>
   </section>
 
+  <!-- ======= INGREDIENT MODAL ======= -->
+  <div id="ingredient-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-box" role="dialog">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modal-food-img" src="" alt="" class="modal-food-img spin-item" />
+      </div>
+      <h2 id="modal-food-name" class="modal-food-name"></h2>
+      <p class="modal-label">Ingredients</p>
+      <ul id="modal-ingredients" class="modal-ingredients"></ul>
+    </div>
+  </div>
+
+  <!-- ======= ADMIN — TODAY'S MENU ======= -->
+  <section id="admin" class="admin-section">
+    <h2 class="section-title">🧑‍🍳 Staff Panel — Today's Menu</h2>
+    <p class="admin-subtitle">Select which hot meals are available today, then save. The Display Board updates live.</p>
+
+    <div class="admin-grid" id="admin-grid">
+      <button class="admin-item" data-meal="quesadillas">
+        <img src="public/cheese-quesadillas-removebg-preview.png" alt="Cheese Quesadillas" />
+        <span>Cheese Quesadillas</span>
+        <span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="pizza">
+        <img src="public/mini-pizzas-removebg-preview.png" alt="Mini Pizzas" />
+        <span>Mini Pizzas</span>
+        <span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="poutine">
+        <img src="public/poutine-removebg-preview.png" alt="Poutine" />
+        <span>Poutine</span>
+        <span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="pasta">
+        <img src="public/pasta-removebg-preview.png" alt="Pasta" />
+        <span>Pasta</span>
+        <span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="sushi">
+        <img src="public/sushi-removebg-preview.png" alt="Sushi" />
+        <span>Sushi</span>
+        <span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="macaroni">
+        <img src="public/beef-macaroni-removebg-preview.png" alt="Macaroni & Beef" />
+        <span>Macaroni &amp; Beef</span>
+        <span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="wings">
+        <img src="public/chicken-wings-removebg-preview.png" alt="Chicken Wings" />
+        <span>Chicken Wings</span>
+        <span class="admin-check">✓</span>
+      </button>
+    </div>
+
+    <div class="admin-actions">
+      <button class="admin-save-btn" id="admin-save-btn">💾 Save Menu</button>
+      <button class="admin-board-btn" id="admin-board-btn">📺 Open Display Board</button>
+    </div>
+    <p class="admin-status" id="admin-status"></p>
+  </section>
+
+  <!-- ======= DISPLAY BOARD (fullscreen) ======= -->
+  <div id="display-board" class="display-board" aria-hidden="true">
+    <button class="board-close" id="board-close-btn">✕ Close</button>
+    <div class="board-header">
+      <img src="public/logo.png" alt="ARSANIIT" class="board-logo" />
+      <div>
+        <h1 class="board-title">Today's Menu</h1>
+        <p class="board-date" id="board-date"></p>
+      </div>
+    </div>
+    <div class="board-items" id="board-items"></div>
+    <p class="board-empty" id="board-empty" style="display:none">Nothing selected yet — check back soon! 🍽️</p>
+    <div class="board-footer">
+      <span>💵 Cash</span>
+      <span>📲 e-Transfer (EMT)</span>
+      <span>First come, first served!</span>
+    </div>
+  </div>
+
   <!-- ======= FOOTER ======= -->
   <footer>
     <img src="public/logo.png" alt="ARSANIIT" class="footer-logo" />
@@ -211,9 +294,108 @@
     <p class="footer-small">Made with ❤️ by PWT students</p>
   </footer>
 
-  <!-- ======= NYAN CAT EASTER EGG ======= -->
+  <!-- ======= ALL SCRIPTS ======= -->
   <script>
-    (function () {
+  const MEALS = {
+    quesadillas: { name:'Cheese Quesadillas', img:'public/cheese-quesadillas-removebg-preview.png',
+      ingredients:['🧀 Cheese','🫓 Tortillas'] },
+    pizza:       { name:'Mini Pizzas', img:'public/mini-pizzas-removebg-preview.png',
+      ingredients:['🧀 Cheese','🍅 Pizza sauce','🫓 Tortillas','🍕 Pepperoni (sometimes)'] },
+    poutine:     { name:'Poutine', img:'public/poutine-removebg-preview.png',
+      ingredients:['🍟 Fries','🫙 Gravy','🧀 Cheese'] },
+    pasta:       { name:'Pasta', img:'public/pasta-removebg-preview.png',
+      ingredients:['🍝 Pasta','🍅 Pasta sauce','🌿 Dried herbs','🧀 Cheese','🫑 Red pepper','🫑 Green pepper'] },
+    sushi:       { name:'Sushi', img:'public/sushi-removebg-preview.png',
+      ingredients:['🍣 Salmon','🐟 Arctic char','🥒 Cucumber','🫑 Peppers','🥭 Mango','🍚 Sushi rice','🌿 Seaweed'] },
+    macaroni:    { name:'Macaroni & Beef', img:'public/beef-macaroni-removebg-preview.png',
+      ingredients:['🍝 Macaroni','🍅 Pasta sauce','🫑 Peppers','🥩 Brown beef'] },
+    wings:       { name:'Chicken Wings', img:'public/chicken-wings-removebg-preview.png',
+      ingredients:['🍗 Chicken wings'] }
+  };
+
+  /* --- INGREDIENT POPUP --- */
+  const modal      = document.getElementById('ingredient-modal');
+  const modalImg   = document.getElementById('modal-food-img');
+  const modalName  = document.getElementById('modal-food-name');
+  const modalList  = document.getElementById('modal-ingredients');
+  const modalClose = document.getElementById('modal-close-btn');
+
+  document.querySelectorAll('.meal-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const meal = MEALS[card.dataset.meal]; if (!meal) return;
+      modalImg.src = meal.img; modalImg.alt = meal.name;
+      modalName.textContent = meal.name;
+      modalList.innerHTML = meal.ingredients.map(i => `<li class="ingredient-pill">${i}</li>`).join('');
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    });
+  });
+  function closeModal() { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  /* --- ADMIN PANEL --- */
+  let selectedMeals = new Set();
+
+  async function loadMenu() {
+    try { const d = await (await fetch('/api/menu')).json(); selectedMeals = new Set(d.items||[]); }
+    catch { selectedMeals = new Set(); }
+    renderAdmin();
+  }
+  function renderAdmin() {
+    document.querySelectorAll('.admin-item').forEach(b => b.classList.toggle('selected', selectedMeals.has(b.dataset.meal)));
+  }
+  document.querySelectorAll('.admin-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedMeals.has(btn.dataset.meal) ? selectedMeals.delete(btn.dataset.meal) : selectedMeals.add(btn.dataset.meal);
+      renderAdmin();
+    });
+  });
+  document.getElementById('admin-save-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('admin-save-btn');
+    const st  = document.getElementById('admin-status');
+    btn.disabled = true; btn.textContent = 'Saving…';
+    try {
+      const r = await fetch('/api/menu',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[...selectedMeals]})});
+      st.textContent = r.ok ? '✅ Saved!' : '❌ Error saving'; st.style.color = r.ok ? '#6a9945' : '#c00';
+    } catch { st.textContent = '❌ Not connected to server'; st.style.color='#c00'; }
+    btn.disabled = false; btn.textContent = '💾 Save Menu';
+    setTimeout(() => st.textContent = '', 4000);
+  });
+  loadMenu();
+
+  /* --- DISPLAY BOARD --- */
+  const board      = document.getElementById('display-board');
+  const boardItems = document.getElementById('board-items');
+  const boardEmpty = document.getElementById('board-empty');
+  const boardDate  = document.getElementById('board-date');
+
+  document.getElementById('admin-board-btn').addEventListener('click', openBoard);
+  document.getElementById('board-close-btn').addEventListener('click', closeBoard);
+
+  async function openBoard() {
+    try { const d = await (await fetch('/api/menu')).json(); selectedMeals = new Set(d.items||[]); renderAdmin(); } catch {}
+    renderBoard();
+    board.classList.add('open'); board.setAttribute('aria-hidden','false');
+    board._t = setInterval(async () => {
+      try { const d = await (await fetch('/api/menu')).json(); selectedMeals = new Set(d.items||[]); renderBoard(); } catch {}
+    }, 30000);
+  }
+  function closeBoard() { board.classList.remove('open'); board.setAttribute('aria-hidden','true'); clearInterval(board._t); }
+
+  function renderBoard() {
+    boardDate.textContent = new Date().toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    const keys = [...selectedMeals];
+    if (!keys.length) { boardItems.innerHTML=''; boardEmpty.style.display='block'; return; }
+    boardEmpty.style.display = 'none';
+    boardItems.innerHTML = keys.map(k => {
+      const m = MEALS[k]; if (!m) return '';
+      return `<div class="board-card"><img src="${m.img}" alt="${m.name}" class="board-card-img spin-item"/><p class="board-card-name">${m.name}</p></div>`;
+    }).join('');
+  }
+
+  /* --- NYAN CAT EASTER EGG --- */
+  (function () {
       const STARS = ['⭐','✨','🌟','💫','⚡'];
       let running = false;
 
@@ -327,12 +509,192 @@
   </script>
 
   <style>
+    /* --- Nyan cat --- */
     @keyframes nyan-star-fall {
       0%   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
       100% { opacity: 0; transform: translate(var(--drift), 50px) scale(0.3) rotate(180deg); }
     }
     #cupcake-trigger { cursor: pointer; }
-    #cupcake-card:hover #cupcake-trigger { animation-play-state: running !important; }
+
+    /* --- tap hint --- */
+    .tap-hint {
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--periwinkle);
+      background: var(--mauve);
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+
+    /* --- INGREDIENT MODAL --- */
+    .modal-backdrop {
+      display: none;
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(45,45,45,0.55);
+      backdrop-filter: blur(6px);
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .modal-backdrop.open { display: flex; animation: fade-in 0.18s ease; }
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
+
+    .modal-box {
+      background: var(--cream);
+      border-radius: 28px 28px 0 0;
+      padding: 2rem 2rem 2.5rem;
+      width: 100%; max-width: 480px;
+      position: relative;
+      animation: slide-up 0.28s cubic-bezier(.22,.68,0,1.2);
+      text-align: center;
+    }
+    @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--mauve); border: none; border-radius: 50%;
+      width: 36px; height: 36px; font-size: 1rem; cursor: pointer;
+      color: var(--periwinkle); font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-img-wrap {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: linear-gradient(135deg,#fff 60%, var(--mauve) 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem; box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .modal-food-img { width: 105px; height: 105px; object-fit: contain; }
+    .modal-food-name {
+      font-family: 'Fredoka', sans-serif; font-size: 1.8rem;
+      color: var(--green); margin-bottom: 0.4rem;
+    }
+    .modal-label {
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--periwinkle); margin-bottom: 0.9rem; opacity: 0.75;
+    }
+    .modal-ingredients {
+      list-style: none; display: flex; flex-wrap: wrap;
+      gap: 0.5rem; justify-content: center;
+    }
+    .ingredient-pill {
+      background: #fff; border: 2px solid var(--mauve);
+      border-radius: 50px; padding: 0.4rem 1rem;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem;
+      color: var(--dark); box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* --- ADMIN PANEL --- */
+    .admin-section {
+      background: #fff; border-radius: 24px;
+      box-shadow: var(--shadow); padding: 3rem 2rem;
+      max-width: 1100px; margin: 0 auto 3rem;
+      border-top: 6px solid var(--periwinkle);
+    }
+    .admin-subtitle {
+      text-align: center; color: #666; margin-top: -2rem; margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .admin-item {
+      position: relative; display: flex; flex-direction: column;
+      align-items: center; gap: 0.6rem; padding: 1.1rem 0.6rem;
+      background: var(--cream); border: 3px solid transparent;
+      border-radius: 18px; cursor: pointer; transition: all 0.2s;
+      font-family: 'Fredoka', sans-serif; font-size: 0.95rem;
+      font-weight: 600; color: var(--dark);
+    }
+    .admin-item img { width: 80px; height: 80px; object-fit: contain; }
+    .admin-item:hover { border-color: var(--mauve); transform: translateY(-3px); }
+    .admin-item.selected { border-color: var(--green); background: #edfde0; }
+    .admin-check {
+      position: absolute; top: 0.4rem; right: 0.6rem;
+      font-size: 1.1rem; color: var(--green);
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .admin-item.selected .admin-check { opacity: 1; }
+
+    .admin-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .admin-save-btn, .admin-board-btn {
+      font-family: 'Fredoka', sans-serif; font-size: 1.2rem;
+      font-weight: 600; border: none; border-radius: 50px;
+      padding: 0.85rem 2.2rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .admin-save-btn  { background: var(--green); color: #fff; box-shadow: 0 4px 16px rgba(106,153,69,0.4); }
+    .admin-board-btn { background: var(--periwinkle); color: #fff; box-shadow: 0 4px 16px rgba(144,122,214,0.4); }
+    .admin-save-btn:hover, .admin-board-btn:hover { transform: translateY(-2px) scale(1.03); }
+    .admin-save-btn:disabled { opacity: 0.6; cursor: wait; }
+    .admin-status { text-align: center; margin-top: 1rem; font-weight: 600; min-height: 1.4em; }
+
+    /* --- DISPLAY BOARD --- */
+    .display-board {
+      display: none; position: fixed; inset: 0; z-index: 20000;
+      background: linear-gradient(160deg, #1a0a2e 0%, #0d1f12 100%);
+      color: #fff; overflow-y: auto; padding: 2.5rem 3rem 4rem;
+      flex-direction: column;
+    }
+    .display-board.open { display: flex; animation: fade-in 0.3s ease; }
+
+    .board-close {
+      align-self: flex-end; background: rgba(255,255,255,0.12);
+      border: 1.5px solid rgba(255,255,255,0.25); color: #fff;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem;
+      padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer;
+      margin-bottom: 1.5rem; transition: background 0.2s;
+    }
+    .board-close:hover { background: rgba(255,255,255,0.22); }
+
+    .board-header {
+      display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem;
+    }
+    .board-logo { height: 80px; filter: drop-shadow(0 0 16px rgba(167,201,87,0.6)); }
+    .board-title {
+      font-family: 'Fredoka', sans-serif; font-size: clamp(2.5rem,6vw,4.5rem);
+      color: var(--yellow-green); text-shadow: 0 0 30px rgba(167,201,87,0.4);
+      line-height: 1;
+    }
+    .board-date { font-size: 1rem; opacity: 0.6; margin-top: 0.3rem; }
+
+    .board-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.8rem; flex: 1;
+    }
+    .board-card {
+      background: rgba(255,255,255,0.07); border-radius: 24px;
+      border: 2px solid rgba(255,255,255,0.12);
+      padding: 2rem 1rem 1.5rem;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 1rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .board-card-img { width: 150px; height: 150px; object-fit: contain; }
+    .board-card-name {
+      font-family: 'Fredoka', sans-serif; font-size: 1.4rem;
+      color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .board-empty {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      font-family: 'Fredoka', sans-serif; font-size: 2rem;
+      opacity: 0.5; text-align: center;
+    }
+    .board-footer {
+      margin-top: 2.5rem; display: flex; gap: 2rem;
+      justify-content: center; flex-wrap: wrap;
+      font-family: 'Fredoka', sans-serif; font-size: 1.2rem;
+      opacity: 0.7;
+    }
+    .board-footer span { background: rgba(255,255,255,0.1); padding: 0.4rem 1.2rem; border-radius: 50px; }
+
+    /* --- nav staff link --- */
+    .nav-staff { color: var(--periwinkle) !important; }
   </style>
 
 </body>
