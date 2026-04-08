@@ -67,7 +67,8 @@ nav {
 
 /* ======= HERO BANNER ======= */
 .hero {
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -203,6 +204,7 @@ section {
   max-width: 1200px;
   margin: 0 auto;
 }
+.hero { max-width: unset; margin: 0; }
 .section-title {
   font-size: clamp(2rem, 5vw, 3rem);
   text-align: center;

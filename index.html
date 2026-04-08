@@ -221,43 +221,73 @@
   <!-- ======= ADMIN — TODAY'S MENU ======= -->
   <section id="admin" class="admin-section">
     <h2 class="section-title">🧑‍🍳 Staff Panel — Today's Menu</h2>
-    <p class="admin-subtitle">Select which hot meals are available today, then save. The Display Board updates live.</p>
+    <p class="admin-subtitle">Select everything that's available today, then save. The Display Board updates live.</p>
 
-    <div class="admin-grid" id="admin-grid">
+    <p class="admin-cat-label meals-label">🍽️ Hot Meals</p>
+    <div class="admin-grid">
       <button class="admin-item" data-meal="quesadillas">
         <img src="public/cheese-quesadillas-removebg-preview.png" alt="Cheese Quesadillas" />
-        <span>Cheese Quesadillas</span>
-        <span class="admin-check">✓</span>
+        <span>Cheese Quesadillas</span><span class="admin-check">✓</span>
       </button>
       <button class="admin-item" data-meal="pizza">
         <img src="public/mini-pizzas-removebg-preview.png" alt="Mini Pizzas" />
-        <span>Mini Pizzas</span>
-        <span class="admin-check">✓</span>
+        <span>Mini Pizzas</span><span class="admin-check">✓</span>
       </button>
       <button class="admin-item" data-meal="poutine">
         <img src="public/poutine-removebg-preview.png" alt="Poutine" />
-        <span>Poutine</span>
-        <span class="admin-check">✓</span>
+        <span>Poutine</span><span class="admin-check">✓</span>
       </button>
       <button class="admin-item" data-meal="pasta">
         <img src="public/pasta-removebg-preview.png" alt="Pasta" />
-        <span>Pasta</span>
-        <span class="admin-check">✓</span>
+        <span>Pasta</span><span class="admin-check">✓</span>
       </button>
       <button class="admin-item" data-meal="sushi">
         <img src="public/sushi-removebg-preview.png" alt="Sushi" />
-        <span>Sushi</span>
-        <span class="admin-check">✓</span>
+        <span>Sushi</span><span class="admin-check">✓</span>
       </button>
       <button class="admin-item" data-meal="macaroni">
         <img src="public/beef-macaroni-removebg-preview.png" alt="Macaroni & Beef" />
-        <span>Macaroni &amp; Beef</span>
-        <span class="admin-check">✓</span>
+        <span>Macaroni &amp; Beef</span><span class="admin-check">✓</span>
       </button>
       <button class="admin-item" data-meal="wings">
         <img src="public/chicken-wings-removebg-preview.png" alt="Chicken Wings" />
-        <span>Chicken Wings</span>
-        <span class="admin-check">✓</span>
+        <span>Chicken Wings</span><span class="admin-check">✓</span>
+      </button>
+    </div>
+
+    <p class="admin-cat-label drinks-label">🥤 Beverages</p>
+    <div class="admin-grid">
+      <button class="admin-item" data-meal="hotchoc">
+        <img src="public/hot-choclate-removebg-preview.png" alt="Hot Chocolate" />
+        <span>Hot Chocolate</span><span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="smoothies">
+        <img src="public/smoothies-removebg-preview.png" alt="Smoothies" />
+        <span>Smoothies</span><span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="coffee">
+        <img src="public/coffee-removebg-preview.png" alt="Coffee" />
+        <span>Coffee</span><span class="admin-check">✓</span>
+      </button>
+    </div>
+
+    <p class="admin-cat-label snacks-label">🍪 Snacks</p>
+    <div class="admin-grid">
+      <button class="admin-item" data-meal="cupcakes">
+        <img src="public/cupcake-removebg-preview.png" alt="Cupcakes" />
+        <span>Cupcakes</span><span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="muffins">
+        <img src="public/muffin-removebg-preview.png" alt="Muffins" />
+        <span>Muffins</span><span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="banana">
+        <img src="public/banana_bread-removebg-preview.png" alt="Banana Bread" />
+        <span>Banana Bread</span><span class="admin-check">✓</span>
+      </button>
+      <button class="admin-item" data-meal="donuts">
+        <img src="public/kenyan_donut-removebg-preview.png" alt="Kenyan Donuts" />
+        <span>Kenyan Donuts</span><span class="admin-check">✓</span>
       </button>
     </div>
 
@@ -298,20 +328,30 @@
   <!-- ======= ALL SCRIPTS ======= -->
   <script>
   const MEALS = {
-    quesadillas: { name:'Cheese Quesadillas', img:'public/cheese-quesadillas-removebg-preview.png',
+    // Hot Meals
+    quesadillas: { name:'Cheese Quesadillas', cat:'meals', img:'public/cheese-quesadillas-removebg-preview.png',
       ingredients:['🧀 Cheese','🫓 Tortillas'] },
-    pizza:       { name:'Mini Pizzas', img:'public/mini-pizzas-removebg-preview.png',
+    pizza:       { name:'Mini Pizzas', cat:'meals', img:'public/mini-pizzas-removebg-preview.png',
       ingredients:['🧀 Cheese','🍅 Pizza sauce','🫓 Tortillas','🍕 Pepperoni (sometimes)'] },
-    poutine:     { name:'Poutine', img:'public/poutine-removebg-preview.png',
+    poutine:     { name:'Poutine', cat:'meals', img:'public/poutine-removebg-preview.png',
       ingredients:['🍟 Fries','🫙 Gravy','🧀 Cheese'] },
-    pasta:       { name:'Pasta', img:'public/pasta-removebg-preview.png',
+    pasta:       { name:'Pasta', cat:'meals', img:'public/pasta-removebg-preview.png',
       ingredients:['🍝 Pasta','🍅 Pasta sauce','🌿 Dried herbs','🧀 Cheese','🫑 Red pepper','🫑 Green pepper'] },
-    sushi:       { name:'Sushi', img:'public/sushi-removebg-preview.png',
+    sushi:       { name:'Sushi', cat:'meals', img:'public/sushi-removebg-preview.png',
       ingredients:['🍣 Salmon','🐟 Arctic char','🥒 Cucumber','🫑 Peppers','🥭 Mango','🍚 Sushi rice','🌿 Seaweed'] },
-    macaroni:    { name:'Macaroni & Beef', img:'public/beef-macaroni-removebg-preview.png',
+    macaroni:    { name:'Macaroni & Beef', cat:'meals', img:'public/beef-macaroni-removebg-preview.png',
       ingredients:['🍝 Macaroni','🍅 Pasta sauce','🫑 Peppers','🥩 Brown beef'] },
-    wings:       { name:'Chicken Wings', img:'public/chicken-wings-removebg-preview.png',
-      ingredients:['🍗 Chicken wings'] }
+    wings:       { name:'Chicken Wings', cat:'meals', img:'public/chicken-wings-removebg-preview.png',
+      ingredients:['🍗 Chicken wings'] },
+    // Beverages
+    hotchoc:     { name:'Hot Chocolate', cat:'drinks', img:'public/hot-choclate-removebg-preview.png', ingredients:[] },
+    smoothies:   { name:'Smoothies', cat:'drinks', img:'public/smoothies-removebg-preview.png', ingredients:[] },
+    coffee:      { name:'Coffee', cat:'drinks', img:'public/coffee-removebg-preview.png', ingredients:[] },
+    // Snacks
+    cupcakes:    { name:'Cupcakes', cat:'snacks', img:'public/cupcake-removebg-preview.png', ingredients:[] },
+    muffins:     { name:'Muffins', cat:'snacks', img:'public/muffin-removebg-preview.png', ingredients:[] },
+    banana:      { name:'Banana Bread', cat:'snacks', img:'public/banana_bread-removebg-preview.png', ingredients:[] },
+    donuts:      { name:'Kenyan Donuts', cat:'snacks', img:'public/kenyan_donut-removebg-preview.png', ingredients:[] }
   };
 
   /* --- INGREDIENT POPUP --- */
@@ -384,14 +424,35 @@
   }
   function closeBoard() { board.classList.remove('open'); board.setAttribute('aria-hidden','true'); clearInterval(board._t); }
 
+  const BOARD_CATS = [
+    { key:'meals',  label:'🍽️ Hot Meals',  cls:'board-meals'  },
+    { key:'drinks', label:'🥤 Beverages',   cls:'board-drinks' },
+    { key:'snacks', label:'🍪 Snacks',      cls:'board-snacks' }
+  ];
+
   function renderBoard() {
     boardDate.textContent = new Date().toLocaleDateString('en-CA',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     const keys = [...selectedMeals];
     if (!keys.length) { boardItems.innerHTML=''; boardEmpty.style.display='block'; return; }
     boardEmpty.style.display = 'none';
-    boardItems.innerHTML = keys.map(k => {
-      const m = MEALS[k]; if (!m) return '';
-      return `<div class="board-card"><img src="${m.img}" alt="${m.name}" class="board-card-img spin-item"/><p class="board-card-name">${m.name}</p></div>`;
+    boardItems.innerHTML = BOARD_CATS.map(cat => {
+      const catItems = keys.filter(k => MEALS[k]?.cat === cat.key);
+      if (!catItems.length) return '';
+      return `
+        <div class="board-category ${cat.cls}">
+          <h3 class="board-cat-title">${cat.label}</h3>
+          <div class="board-cat-items">
+            ${catItems.map(k => {
+              const m = MEALS[k];
+              return `<div class="board-item-card">
+                <div class="board-item-bubble">
+                  <img src="${m.img}" alt="${m.name}" class="board-card-img spin-item"/>
+                </div>
+                <p class="board-card-name">${m.name}</p>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>`;
     }).join('');
   }
 
@@ -537,22 +598,24 @@
       position: fixed; inset: 0; z-index: 10000;
       background: rgba(45,45,45,0.55);
       backdrop-filter: blur(6px);
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
+      padding: 1.5rem;
     }
     .modal-backdrop.open { display: flex; animation: fade-in 0.18s ease; }
     @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
 
     .modal-box {
       background: var(--cream);
-      border-radius: 28px 28px 0 0;
-      padding: 2rem 2rem 2.5rem;
-      width: 100%; max-width: 480px;
+      border-radius: 28px;
+      padding: 2.5rem 2rem 2.5rem;
+      width: 100%; max-width: 420px;
       position: relative;
-      animation: slide-up 0.28s cubic-bezier(.22,.68,0,1.2);
+      animation: pop-in 0.28s cubic-bezier(.22,.68,0,1.2);
       text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     }
-    @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    @keyframes pop-in { from { opacity:0; transform: scale(0.85); } to { opacity:1; transform: scale(1); } }
 
     .modal-close {
       position: absolute; top: 1rem; right: 1rem;
@@ -632,67 +695,100 @@
     .admin-save-btn:hover, .admin-board-btn:hover { transform: translateY(-2px) scale(1.03); }
     .admin-save-btn:disabled { opacity: 0.6; cursor: wait; }
     .admin-status { text-align: center; margin-top: 1rem; font-weight: 600; min-height: 1.4em; }
+    .admin-cat-label {
+      font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 600;
+      margin: 1.5rem 0 0.6rem; padding: 0.3rem 1rem;
+      border-radius: 50px; display: inline-block;
+    }
+    .meals-label  { background: #d4eab3; color: var(--green); }
+    .drinks-label { background: var(--mauve); color: var(--periwinkle); }
+    .snacks-label { background: #ffe4c4; color: #c15b00; }
 
     /* --- DISPLAY BOARD --- */
     .display-board {
       display: none; position: fixed; inset: 0; z-index: 20000;
-      background: linear-gradient(160deg, #1a0a2e 0%, #0d1f12 100%);
-      color: #fff; overflow-y: auto; padding: 2.5rem 3rem 4rem;
+      background: var(--cream); color: var(--dark);
+      overflow-y: auto; padding: 1.5rem 2.5rem 4rem;
       flex-direction: column;
     }
     .display-board.open { display: flex; animation: fade-in 0.3s ease; }
 
     .board-close {
-      align-self: flex-end; background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.25); color: #fff;
-      font-family: 'Fredoka', sans-serif; font-size: 1rem;
-      padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer;
-      margin-bottom: 1.5rem; transition: background 0.2s;
+      align-self: flex-end; background: var(--mauve);
+      border: none; color: var(--periwinkle);
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 700;
+      padding: 0.5rem 1.4rem; border-radius: 50px; cursor: pointer;
+      margin-bottom: 1rem; transition: background 0.2s;
     }
-    .board-close:hover { background: rgba(255,255,255,0.22); }
+    .board-close:hover { background: #c9a8ff; }
 
     .board-header {
-      display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;
+      border-bottom: 4px solid var(--mauve); padding-bottom: 1.2rem;
     }
-    .board-logo { height: 80px; filter: drop-shadow(0 0 16px rgba(167,201,87,0.6)); }
+    .board-logo { height: 80px; filter: drop-shadow(0 4px 12px rgba(106,153,69,0.3)); animation: hero-bob 3.5s ease-in-out infinite; }
     .board-title {
-      font-family: 'Fredoka', sans-serif; font-size: clamp(2.5rem,6vw,4.5rem);
-      color: var(--yellow-green); text-shadow: 0 0 30px rgba(167,201,87,0.4);
-      line-height: 1;
+      font-family: 'Fredoka', sans-serif; font-size: clamp(2.2rem,5vw,4rem);
+      color: var(--green); text-shadow: 3px 3px 0 var(--mauve); line-height: 1;
     }
-    .board-date { font-size: 1rem; opacity: 0.6; margin-top: 0.3rem; }
+    .board-date { font-size: 1rem; color: var(--periwinkle); margin-top: 0.3rem; font-weight: 600; }
 
-    .board-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.8rem; flex: 1;
+    /* Category sections on the board */
+    .board-items { display: flex; flex-direction: column; gap: 1.8rem; flex: 1; }
+
+    .board-category {
+      background: #fff; border-radius: 20px;
+      padding: 1.5rem 1.8rem 2rem;
+      box-shadow: var(--shadow);
     }
-    .board-card {
-      background: rgba(255,255,255,0.07); border-radius: 24px;
-      border: 2px solid rgba(255,255,255,0.12);
-      padding: 2rem 1rem 1.5rem;
+    .board-meals  { border-left: 8px solid var(--green); }
+    .board-drinks { border-left: 8px solid var(--periwinkle); }
+    .board-snacks { border-left: 8px solid #f4a261; }
+
+    .board-cat-title {
+      font-family: 'Fredoka', sans-serif; font-size: 1.6rem;
+      color: var(--green); margin-bottom: 1.2rem;
+    }
+    .board-drinks .board-cat-title { color: var(--periwinkle); }
+    .board-snacks .board-cat-title { color: #c15b00; }
+
+    .board-cat-items {
+      display: flex; flex-wrap: wrap; gap: 1.2rem;
+    }
+    .board-item-card {
       display: flex; flex-direction: column; align-items: center;
-      text-align: center; gap: 1rem;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      text-align: center; gap: 0.6rem; width: 140px;
     }
-    .board-card-img { width: 150px; height: 150px; object-fit: contain; }
-    .board-card-name {
-      font-family: 'Fredoka', sans-serif; font-size: 1.4rem;
-      color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    .board-item-bubble {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, #fff 60%, var(--mauve) 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     }
+    .board-meals  .board-item-bubble { background: linear-gradient(135deg,#fff 60%,#d4eab3 100%); }
+    .board-drinks .board-item-bubble { background: linear-gradient(135deg,#fff 60%,var(--mauve) 100%); }
+    .board-snacks .board-item-bubble { background: linear-gradient(135deg,#fff 60%,#ffe4c4 100%); }
+
+    .board-card-img { width: 95px; height: 95px; object-fit: contain; }
+    .board-card-name { font-family:'Fredoka',sans-serif; font-size:1rem; font-weight:600; color:var(--dark); line-height:1.3; }
+
     .board-empty {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      font-family: 'Fredoka', sans-serif; font-size: 2rem;
-      opacity: 0.5; text-align: center;
+      flex:1; display:flex; align-items:center; justify-content:center;
+      font-family:'Fredoka',sans-serif; font-size:2rem; color:var(--periwinkle);
+      opacity:0.6; text-align:center;
     }
     .board-footer {
-      margin-top: 2.5rem; display: flex; gap: 2rem;
-      justify-content: center; flex-wrap: wrap;
-      font-family: 'Fredoka', sans-serif; font-size: 1.2rem;
-      opacity: 0.7;
+      margin-top: 2rem; display:flex; gap:1.2rem;
+      justify-content:center; flex-wrap:wrap;
+      font-family:'Fredoka',sans-serif; font-size:1.1rem;
     }
-    .board-footer span { background: rgba(255,255,255,0.1); padding: 0.4rem 1.2rem; border-radius: 50px; }
+    .board-footer span {
+      background: var(--green); color:#fff;
+      padding:0.4rem 1.2rem; border-radius:50px;
+      box-shadow: 0 3px 10px rgba(106,153,69,0.3);
+    }
+    .board-footer span:nth-child(2) { background: var(--periwinkle); box-shadow:0 3px 10px rgba(144,122,214,0.3); }
+    .board-footer span:nth-child(3) { background: var(--mauve); color: var(--dark); box-shadow:none; }
 
     /* --- nav staff link --- */
     .nav-staff { color: var(--periwinkle) !important; }
