@@ -478,33 +478,39 @@
         cat.style.cssText = `
           position: fixed;
           top: 50%;
-          left: -220px;
+          left: -400px;
           transform: translateY(-50%);
-          height: 90px;
+          height: 220px;
           z-index: 9999;
           pointer-events: none;
           image-rendering: pixelated;
-          filter: drop-shadow(0 0 8px rgba(255,100,200,0.7));
+          filter: drop-shadow(0 0 20px rgba(255,100,200,0.9));
         `;
         document.body.appendChild(cat);
 
-        /* --- rainbow trail bar --- */
-        const rainbow = document.createElement('div');
-        rainbow.style.cssText = `
-          position: fixed;
-          top: 50%;
-          left: 0;
-          width: 0px;
-          height: 18px;
-          transform: translateY(-50%);
-          background: linear-gradient(90deg,
-            #ff0000, #ff7700, #ffff00, #00cc00, #0000ff, #8800ff);
-          z-index: 9997;
-          pointer-events: none;
-          border-radius: 0 6px 6px 0;
-          opacity: 0.85;
-        `;
-        document.body.appendChild(rainbow);
+        /* --- rainbow trail (6 animated stripes) --- */
+        const RB_COLORS = ['#ff0000','#ff8800','#ffee00','#00cc00','#0066ff','#9900cc'];
+        const RB_H = 28;   // height of each stripe
+        const rainbowStripes = RB_COLORS.map((color, i) => {
+          const stripe = document.createElement('div');
+          stripe.style.cssText = `
+            position: fixed;
+            top: calc(50% - ${(RB_COLORS.length / 2 - i) * RB_H}px);
+            left: 0;
+            width: 0px;
+            height: ${RB_H}px;
+            background: repeating-linear-gradient(90deg,
+              ${color} 0px, ${color} 24px,
+              ${color}bb 24px, ${color}bb 32px);
+            background-size: 32px 100%;
+            animation: rb-march 0.18s linear infinite;
+            z-index: 9997;
+            pointer-events: none;
+            opacity: 0.92;
+          `;
+          document.body.appendChild(stripe);
+          return stripe;
+        });
 
         const screenW  = window.innerWidth;
         const duration = 2200; // ms to cross the screen
@@ -520,9 +526,10 @@
             ? 2 * progress * progress
             : 1 - Math.pow(-2 * progress + 2, 2) / 2;
 
-          const x = -220 + ease * (screenW + 440);
+          const x = -400 + ease * (screenW + 800);
           cat.style.left = x + 'px';
-          rainbow.style.width = Math.max(0, x + 110) + 'px'; // trail up to cat center
+          const trailW = Math.max(0, x + 80) + 'px';
+          rainbowStripes.forEach(s => s.style.width = trailW);
 
           // drop a star every ~90ms
           if (now - lastStarTime > 90 && x > 0 && x < screenW) {
@@ -533,10 +540,9 @@
           if (progress < 1) {
             requestAnimationFrame(frame);
           } else {
-            // cleanup after stars finish
             setTimeout(() => {
               cat.remove();
-              rainbow.remove();
+              rainbowStripes.forEach(s => s.remove());
               overlay.remove();
               running = false;
             }, 900);
@@ -572,6 +578,10 @@
 
   <style>
     /* --- Nyan cat --- */
+    @keyframes rb-march {
+      from { background-position: 0 0; }
+      to   { background-position: 32px 0; }
+    }
     @keyframes nyan-star-fall {
       0%   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
       100% { opacity: 0; transform: translate(var(--drift), 50px) scale(0.3) rotate(180deg); }
