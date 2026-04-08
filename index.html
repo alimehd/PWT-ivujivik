@@ -64,26 +64,32 @@
         <div class="menu-card meal-card" data-meal="quesadillas">
           <div class="menu-card-img"><img src="public/cheese-quesadillas-removebg-preview.png" class="spin-item" alt="Cheese Quesadillas" /></div>
           <p class="menu-card-name">Cheese Quesadillas</p>
+          <span class="price-tag">$1 / slice</span>
         </div>
         <div class="menu-card meal-card" data-meal="pizza">
           <div class="menu-card-img"><img src="public/mini-pizzas-removebg-preview.png" class="spin-item" alt="Mini Pizzas" /></div>
           <p class="menu-card-name">Mini Pizzas</p>
+          <span class="price-tag">$2</span>
         </div>
         <div class="menu-card meal-card" data-meal="poutine">
           <div class="menu-card-img"><img src="public/poutine-removebg-preview.png" class="spin-item" alt="Poutine" /></div>
           <p class="menu-card-name">Poutine</p>
+          <span class="price-tag">$10</span>
         </div>
         <div class="menu-card meal-card" data-meal="pasta">
           <div class="menu-card-img"><img src="public/pasta-removebg-preview.png" class="spin-item" alt="Pasta" /></div>
           <p class="menu-card-name">Pasta</p>
+          <span class="price-tag">$20</span>
         </div>
         <div class="menu-card meal-card" data-meal="sushi">
           <div class="menu-card-img"><img src="public/sushi-removebg-preview.png" class="spin-item" alt="Sushi" /></div>
           <p class="menu-card-name">Sushi</p>
+          <span class="price-tag">$15 / roll</span>
         </div>
         <div class="menu-card meal-card" data-meal="macaroni">
           <div class="menu-card-img"><img src="public/beef-macaroni-removebg-preview.png" class="spin-item" alt="Macaroni & Beef" /></div>
           <p class="menu-card-name">Macaroni &amp; Beef</p>
+          <span class="price-tag">$20</span>
         </div>
         <div class="menu-card meal-card" data-meal="wings">
           <div class="menu-card-img"><img src="public/chicken-wings-removebg-preview.png" class="spin-item" alt="Chicken Wings" /></div>
@@ -99,14 +105,17 @@
         <div class="menu-card">
           <div class="menu-card-img"><img src="public/hot-choclate-removebg-preview.png" class="spin-item" alt="Hot Chocolate" /></div>
           <p class="menu-card-name">Hot Chocolate</p>
+          <span class="price-tag">$2</span>
         </div>
         <div class="menu-card">
           <div class="menu-card-img"><img src="public/smoothies-removebg-preview.png" class="spin-item" alt="Smoothies" /></div>
           <p class="menu-card-name">Smoothies<br /><span class="flavours">Blueberry · Strawberry · Mango</span></p>
+          <span class="price-tag">$2</span>
         </div>
         <div class="menu-card">
           <div class="menu-card-img"><img src="public/coffee-removebg-preview.png" class="spin-item" alt="Coffee" /></div>
           <p class="menu-card-name">Coffee</p>
+          <span class="price-tag">$2</span>
         </div>
       </div>
     </div>
@@ -118,18 +127,22 @@
         <div class="menu-card" id="cupcake-card">
           <div class="menu-card-img"><img src="public/cupcake-removebg-preview.png" class="spin-item" alt="Cupcakes" id="cupcake-trigger" /></div>
           <p class="menu-card-name">Cupcakes</p>
+          <span class="price-tag">$1</span>
         </div>
         <div class="menu-card">
           <div class="menu-card-img"><img src="public/muffin-removebg-preview.png" class="spin-item" alt="Muffins" /></div>
           <p class="menu-card-name">Muffins</p>
+          <span class="price-tag">$1</span>
         </div>
         <div class="menu-card">
           <div class="menu-card-img"><img src="public/banana_bread-removebg-preview.png" class="spin-item" alt="Banana Bread" /></div>
           <p class="menu-card-name">Banana Bread</p>
+          <span class="price-tag">$1</span>
         </div>
         <div class="menu-card">
           <div class="menu-card-img"><img src="public/kenyan_donut-removebg-preview.png" class="spin-item" alt="Kenyan Donuts" /></div>
           <p class="menu-card-name">Kenyan Donuts</p>
+          <span class="price-tag">3 for $1</span>
         </div>
       </div>
     </div>
@@ -213,6 +226,7 @@
         <img id="modal-food-img" src="" alt="" class="modal-food-img spin-item" />
       </div>
       <h2 id="modal-food-name" class="modal-food-name"></h2>
+      <p id="modal-price" class="modal-price"></p>
       <p class="modal-label">Ingredients</p>
       <ul id="modal-ingredients" class="modal-ingredients"></ul>
     </div>
@@ -292,7 +306,6 @@
     </div>
 
     <div class="admin-actions">
-      <button class="admin-save-btn" id="admin-save-btn">💾 Save Menu</button>
       <button class="admin-board-btn" id="admin-board-btn">📺 Open Display Board</button>
     </div>
     <p class="admin-status" id="admin-status"></p>
@@ -329,29 +342,29 @@
   <script>
   const MEALS = {
     // Hot Meals
-    quesadillas: { name:'Cheese Quesadillas', cat:'meals', img:'public/cheese-quesadillas-removebg-preview.png',
+    quesadillas: { name:'Cheese Quesadillas', price:'$1 / slice', cat:'meals', img:'public/cheese-quesadillas-removebg-preview.png',
       ingredients:['🧀 Cheese','🫓 Tortillas'] },
-    pizza:       { name:'Mini Pizzas', cat:'meals', img:'public/mini-pizzas-removebg-preview.png',
+    pizza:       { name:'Mini Pizzas', price:'$2', cat:'meals', img:'public/mini-pizzas-removebg-preview.png',
       ingredients:['🧀 Cheese','🍅 Pizza sauce','🫓 Tortillas','🍕 Pepperoni (sometimes)'] },
-    poutine:     { name:'Poutine', cat:'meals', img:'public/poutine-removebg-preview.png',
+    poutine:     { name:'Poutine', price:'$10', cat:'meals', img:'public/poutine-removebg-preview.png',
       ingredients:['🍟 Fries','🫙 Gravy','🧀 Cheese'] },
-    pasta:       { name:'Pasta', cat:'meals', img:'public/pasta-removebg-preview.png',
+    pasta:       { name:'Pasta', price:'$20', cat:'meals', img:'public/pasta-removebg-preview.png',
       ingredients:['🍝 Pasta','🍅 Pasta sauce','🌿 Dried herbs','🧀 Cheese','🫑 Red pepper','🫑 Green pepper'] },
-    sushi:       { name:'Sushi', cat:'meals', img:'public/sushi-removebg-preview.png',
+    sushi:       { name:'Sushi', price:'$15 / roll', cat:'meals', img:'public/sushi-removebg-preview.png',
       ingredients:['🍣 Salmon','🐟 Arctic char','🥒 Cucumber','🫑 Peppers','🥭 Mango','🍚 Sushi rice','🌿 Seaweed'] },
-    macaroni:    { name:'Macaroni & Beef', cat:'meals', img:'public/beef-macaroni-removebg-preview.png',
+    macaroni:    { name:'Macaroni & Beef', price:'$20', cat:'meals', img:'public/beef-macaroni-removebg-preview.png',
       ingredients:['🍝 Macaroni','🍅 Pasta sauce','🫑 Peppers','🥩 Brown beef'] },
-    wings:       { name:'Chicken Wings', cat:'meals', img:'public/chicken-wings-removebg-preview.png',
+    wings:       { name:'Chicken Wings', price:'', cat:'meals', img:'public/chicken-wings-removebg-preview.png',
       ingredients:['🍗 Chicken wings'] },
     // Beverages
-    hotchoc:     { name:'Hot Chocolate', cat:'drinks', img:'public/hot-choclate-removebg-preview.png', ingredients:[] },
-    smoothies:   { name:'Smoothies', cat:'drinks', img:'public/smoothies-removebg-preview.png', ingredients:[] },
-    coffee:      { name:'Coffee', cat:'drinks', img:'public/coffee-removebg-preview.png', ingredients:[] },
+    hotchoc:   { name:'Hot Chocolate', price:'$2', cat:'drinks', img:'public/hot-choclate-removebg-preview.png', ingredients:[] },
+    smoothies: { name:'Smoothies',     price:'$2', cat:'drinks', img:'public/smoothies-removebg-preview.png',   ingredients:[] },
+    coffee:    { name:'Coffee',        price:'$2', cat:'drinks', img:'public/coffee-removebg-preview.png',      ingredients:[] },
     // Snacks
-    cupcakes:    { name:'Cupcakes', cat:'snacks', img:'public/cupcake-removebg-preview.png', ingredients:[] },
-    muffins:     { name:'Muffins', cat:'snacks', img:'public/muffin-removebg-preview.png', ingredients:[] },
-    banana:      { name:'Banana Bread', cat:'snacks', img:'public/banana_bread-removebg-preview.png', ingredients:[] },
-    donuts:      { name:'Kenyan Donuts', cat:'snacks', img:'public/kenyan_donut-removebg-preview.png', ingredients:[] }
+    cupcakes: { name:'Cupcakes',      price:'$1', cat:'snacks', img:'public/cupcake-removebg-preview.png',            ingredients:[] },
+    muffins:  { name:'Muffins',       price:'$1', cat:'snacks', img:'public/muffin-removebg-preview.png',             ingredients:[] },
+    banana:   { name:'Banana Bread',  price:'$1', cat:'snacks', img:'public/banana_bread-removebg-preview.png',       ingredients:[] },
+    donuts:   { name:'Kenyan Donuts', price:'3 for $1', cat:'snacks', img:'public/kenyan_donut-removebg-preview.png', ingredients:[] }
   };
 
   /* --- INGREDIENT POPUP --- */
@@ -366,7 +379,11 @@
       const meal = MEALS[card.dataset.meal]; if (!meal) return;
       modalImg.src = meal.img; modalImg.alt = meal.name;
       modalName.textContent = meal.name;
-      modalList.innerHTML = meal.ingredients.map(i => `<li class="ingredient-pill">${i}</li>`).join('');
+      document.getElementById('modal-price').textContent = meal.price || '';
+      document.getElementById('modal-price').style.display = meal.price ? 'inline-block' : 'none';
+      modalList.innerHTML = meal.ingredients.length
+        ? meal.ingredients.map(i => `<li class="ingredient-pill">${i}</li>`).join('')
+        : '<li class="ingredient-pill" style="opacity:0.5">No ingredients listed</li>';
       modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
     });
   });
@@ -449,6 +466,7 @@
                   <img src="${m.img}" alt="${m.name}" class="board-card-img spin-item"/>
                 </div>
                 <p class="board-card-name">${m.name}</p>
+                ${m.price ? `<span class="board-price">${m.price}</span>` : ''}
               </div>`;
             }).join('')}
           </div>
@@ -588,6 +606,30 @@
     }
     #cupcake-trigger { cursor: pointer; }
 
+    /* --- price tag on menu cards --- */
+    .price-tag {
+      display: inline-block;
+      background: var(--green); color: #fff;
+      font-family: 'Fredoka', sans-serif; font-size: 0.95rem; font-weight: 600;
+      padding: 0.15rem 0.75rem; border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(106,153,69,0.35);
+    }
+    /* --- price in modal --- */
+    .modal-price {
+      display: inline-block;
+      background: var(--green); color: #fff;
+      font-family: 'Fredoka', sans-serif; font-size: 1.3rem; font-weight: 700;
+      padding: 0.3rem 1.2rem; border-radius: 50px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 3px 12px rgba(106,153,69,0.35);
+    }
+    /* --- price on display board --- */
+    .board-price {
+      display: inline-block;
+      background: var(--green); color: #fff;
+      font-family: 'Fredoka', sans-serif; font-size: 0.95rem; font-weight: 700;
+      padding: 0.2rem 0.8rem; border-radius: 50px;
+    }
     /* --- tap hint --- */
     .tap-hint {
       font-family: 'Nunito', sans-serif;
