@@ -409,17 +409,6 @@
       renderAdmin();
     });
   });
-  document.getElementById('admin-save-btn').addEventListener('click', async () => {
-    const btn = document.getElementById('admin-save-btn');
-    const st  = document.getElementById('admin-status');
-    btn.disabled = true; btn.textContent = 'Saving…';
-    try {
-      const r = await fetch('/api/menu',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:[...selectedMeals]})});
-      st.textContent = r.ok ? '✅ Saved!' : '❌ Error saving'; st.style.color = r.ok ? '#6a9945' : '#c00';
-    } catch { st.textContent = '❌ Not connected to server'; st.style.color='#c00'; }
-    btn.disabled = false; btn.textContent = '💾 Save Menu';
-    setTimeout(() => st.textContent = '', 4000);
-  });
   loadMenu();
 
   /* --- DISPLAY BOARD --- */
